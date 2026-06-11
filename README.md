@@ -1,6 +1,6 @@
 TaskFlow - Task Manager Application
 
-https://github.com/ArianGhaderi99/Tasklist-website/blob/main/Screen.png
+![screenshot](https://github.com/ArianGhaderi99/Tasklist-website/blob/main/Screen.png)
 
 
 📝 About
