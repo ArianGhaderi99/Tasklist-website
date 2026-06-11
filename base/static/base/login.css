@@ -1,0 +1,32 @@
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
+.tab-buttons {
+        display: flex;
+        gap: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 1.5rem;
+    }
+.tab-link {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: #6b7280;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        transition: 0.2s;
+    }
+.tab-link.active {
+        color: #3b82f6;
+        border-bottom: 2px solid #3b82f6;
+    }
+.tab-pane {
+        display: none;
+    }
+.tab-pane.active {
+        display: block;
+    }

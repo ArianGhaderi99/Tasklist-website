@@ -1,0 +1,13 @@
+.about-content p {
+  margin-bottom: 1rem;
+}
+
+.benefits-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.benefits-list li {
+  margin-bottom: 0.5rem;
+}

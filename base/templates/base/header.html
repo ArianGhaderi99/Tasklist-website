@@ -1,0 +1,26 @@
+<header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo"><a href="index.html">TaskFlow</a></div>
+        <ul class="nav-links">
+          <li><a href="{% url 'pages:home' %}" class="active">Home</a></li>
+          <li><a href="{% url 'pages:about' %}">About</a></li>
+          <li><a href="{% url 'pages:contact' %}">Contact</a></li>
+          <li><a href="{% url 'task:task_list' %}">Tasks</a></li>
+          <!-- جایگزین لینک قبلی -->
+          {% if user.is_authenticated %}
+              <li>
+                  <form method="post" action="{% url 'accounts:logout' %}" style="display: inline;">
+                      {% csrf_token %}
+                      <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer; font-weight: 500;">
+                          Logout ({{ user.username }})
+                      </button>
+                  </form>
+              </li>
+          {% else %}
+              <li><a href="{% url 'accounts:login' %}">Login / Sign Up</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+</header>

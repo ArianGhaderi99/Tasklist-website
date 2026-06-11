@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {% endblock title %}</title>
+  <link href="{% static 'base/style.css' %}" rel="stylesheet"/>
+  <link href="{% static 'base/home.css' %}" rel="stylesheet"/>
+  <link href="{% static 'base/about.css' %}" rel="stylesheet"/>
+  <link href="{% static 'base/contact.css' %}" rel="stylesheet"/>
+  <link href="{% static 'base/task.css' %}" rel="stylesheet"/>
+  <link href="{% static 'base/login.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    {% include "base/header.html" %}
+
+    {% block content %}
+        
+    {% endblock content %}
+
+    {% include "base/footer.html" %}
+</body>
+<script src="{% static 'base/login.js' %}"></script>
+<script src="{% static 'base/task.js' %}"></script>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+
+{% block title %} About | Task Manager {% endblock title %}
+
+{% block content %}
+  <main>
+    <div class="container">
+      <div class="card" style="max-width: 900px; margin: 0 auto;">
+        <h2>About TaskFlow</h2>
+        <div class="about-content">
+          <p><strong>TaskFlow</strong> is a modern, lightweight task manager designed to help you organize your daily activities without any unnecessary complexity. Whether you're a student, professional, or anyone looking to boost productivity, TaskFlow provides a clean interface to manage your to-dos effectively.</p>
+          
+          <h3>Key Features</h3>
+          <ul class="benefits-list">
+            <li>📝 <strong>Task Creation</strong> – Add tasks with descriptions, due dates, and due times.</li>
+            <li>✅ <strong>Completion Tracking</strong> – Mark tasks as done with a single click.</li>
+            <li>🗑️ <strong>Easy Deletion</strong> – Remove tasks you no longer need.</li>
+            <li>💾 <strong>Local Storage</strong> – Your tasks are saved in your browser, so no data loss on refresh.</li>
+            <li>📱 <strong>Fully Responsive</strong> – Works seamlessly on phones, tablets, and desktops.</li>
+            <li>🚀 <strong>No Account Required</strong> – Start using immediately without signup.</li>
+          </ul>
+          
+          <h3>Why we built TaskFlow</h3>
+          <p>Many task managers are overloaded with features and require accounts. We wanted a simple, privacy-friendly tool that does one thing well: help you remember and complete your tasks. TaskFlow stores everything locally on your device – no servers, no tracking.</p>
+          
+          <h3>Future Plans</h3>
+          <p>We are planning to add categories, priority levels, and optional cloud sync. Stay tuned!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Manage Tasks</h2>
+
+    <!-- فرم افزودن سریع -->
+    <form method="post" action="{% url 'task:task_add' %}">
+        {% csrf_token %}
+        <div class="task-form-row">
+            <div class="form-group">
+                <label>Title *</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>End date</label>
+                <input type="date" name="end_date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>End time</label>
+                <input type="time" name="end_time" class="form-control">
+            </div>
+        </div>
+        <button type="submit" class="btn">➕ Add Task</button>
+    </form>
+
+    <!-- لیست تسک‌ها -->
+    <div class="task-list">
+        {% for task in tasks %}
+        <div class="task-item {% if task.completed %}completed{% endif %}">
+            <div class="task-info">
+                <form method="post" action="{% url 'task:task_toggle' task.pk %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; cursor:pointer; font-size:1.2rem;">
+                        {% if task.completed %}✅{% else %}⬜{% endif %}
+                    </button>
+                </form>
+                <div>
+                    <div class="task-text">{{ task.title }}</div>
+                    <div class="task-details">
+                        📅 End: {{ task.end_date|default:"No date" }} ⏰ {{ task.end_time|default:"No time" }}
+                    </div>
+                </div>
+            </div>
+            <div class="task-actions">
+                <a href="{% url 'task:task_edit' task.pk %}" class="icon-btn">✏️</a>
+                <form method="post" action="{% url 'task:task_delete' task.pk %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="icon-btn" onclick="return confirm('Delete this task?');">🗑️</button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+        <div style="text-align:center; padding:1rem;">No tasks yet. Add a new one.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

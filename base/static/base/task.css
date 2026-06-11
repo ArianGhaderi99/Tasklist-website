@@ -1,0 +1,57 @@
+/* task.css - styles for task pages */
+.task-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.task-list {
+    margin-top: 1.5rem;
+}
+
+.task-item {
+    background: #f9fafb;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 2;
+}
+
+.task-details {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #6b7280;
+}
+
+.icon-btn:hover {
+    color: #ef4444;
+}

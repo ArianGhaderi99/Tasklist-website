@@ -1,0 +1,111 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Login / Sign Up{% endblock %}
+
+
+{% block content %}
+
+<style>
+    .tab-buttons {
+        display: flex;
+        gap: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 1.5rem;
+    }
+    .tab-link {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: #6b7280;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        transition: 0.2s;
+    }
+    .tab-link.active {
+        color: #3b82f6;
+        border-bottom: 2px solid #3b82f6;
+    }
+    .tab-pane {
+        display: none;
+    }
+    .tab-pane.active {
+        display: block;
+    }
+    /* استایل خطاها */
+    .errorlist {
+        color: #dc2626;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        list-style: none;
+        padding-left: 0;
+    }
+    .non-field-errors {
+        background-color: #fee2e2;
+        color: #b91c1c;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+    }
+</style>
+
+<div class="card" style="max-width: 500px; margin: 0 auto;">
+    <div class="tab-buttons">
+        <button class="tab-link active" data-tab="login-pane">Login</button>
+        <button class="tab-link" data-tab="register-pane">Sign Up</button>
+    </div>
+
+    <!-- پنل ورود -->
+    <div id="login-pane" class="tab-pane active">
+        <form method="post" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <!-- نمایش خطاهای عمومی (مثل نام کاربری یا رمز اشتباه) -->
+            {% if form.non_field_errors %}
+                <div class="non-field-errors">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" required>
+                {{ form.username.errors }}
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+                {{ form.password.errors }}
+            </div>
+            <button type="submit" class="btn" style="width:100%">Login</button>
+        </form>
+    </div>
+
+    <!-- پنل ثبت‌نام -->
+    <div id="register-pane" class="tab-pane">
+        <form method="post" action="{% url 'accounts:register' %}">
+            {% csrf_token %}
+            <!-- خطاهای عمومی فرم ثبت‌نام (مثلاً عدم تطابق رمزها) -->
+            {{ form.non_field_errors }}
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" value="{{ form.username.value|default:'' }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password1" class="form-control" required>
+                {{ form.password1.errors }}
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="password2" class="form-control" required>
+                {{ form.password2.errors }}
+            </div>
+            <button type="submit" class="btn" style="width:100%">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
